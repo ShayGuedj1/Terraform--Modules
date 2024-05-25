@@ -33,7 +33,12 @@ pipeline {
         }
 
         success {
-            echo 'Pipeline succeeded!'
+            echo 'Pipeline succeeded! Waiting 2 minutes before destroying instacne and instance network..'
+            script {
+                // Destroy Terraform resources
+                sh 'sleep 120'
+                sh 'terraform destroy -auto-approve'
+            }
         }
 
         failure {
