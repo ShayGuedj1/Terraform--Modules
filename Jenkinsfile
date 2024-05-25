@@ -28,9 +28,7 @@ pipeline {
         }
     }
     post {
-        /*always {
-            cleanWs() // Clean up the workspace
-        }*/
+        
 
         success {
             echo 'Pipeline succeeded! Waiting 2 minutes before destroying instacne and instance network..'
@@ -51,6 +49,9 @@ pipeline {
 
         cleanup {
             echo 'Cleanup stage: always executed'
+        }
+        always {
+            cleanWs() // Clean up the workspace
         }
     }
 
