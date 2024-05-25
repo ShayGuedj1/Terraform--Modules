@@ -31,7 +31,7 @@ pipeline {
         
 
         success {
-            echo 'Pipeline succeeded! Waiting 2 minutes before destroying instacne and instance network..'
+            echo 'Pipeline succeeded! Waiting 1 minute before destroying instacne and instance network..'
             script {
                 // Destroy Terraform resources
                 sh 'sleep 60'
@@ -45,13 +45,6 @@ pipeline {
                 // Destroy Terraform resources
                 sh 'terraform destroy -auto-approve'
             }
-        }
-
-        cleanup {
-            echo 'Cleanup stage: always executed'
-        }
-        always {
-            cleanWs() // Clean up the workspace
         }
     }
 
